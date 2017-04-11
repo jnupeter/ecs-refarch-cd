@@ -1,0 +1,14 @@
+teps to automate the whole process:
+1, create a s3 bucket in us-east-1 region (because AWS::CodeBuild not yet been supported in other region), with versioning enabled;
+2, replace the bucket name in bin/deploy
+3, replace the TemplateURL in ecs-refarch-continuous-deployment.yaml with the corresponding bucket name;
+   replace the ArtifactBucket name in ecs-refarch-continuous-deployment.yaml
+4, run bin/deploy
+5, create a stack with ecs-refarch-continuous-deploy.yaml, with parameters input
+
+key point to automate:
+1, separate templates of infrastructure and deployment-related components, in this case, separate the ECS Cluster creation templates from service template
+the templates/service.yaml is for deployment only!
+
+key to improve:
+use a command line(s) to do that.
